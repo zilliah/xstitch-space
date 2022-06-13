@@ -55,6 +55,10 @@ h2 {
     font-size: 3rem;
 }
 
+h2 + h2 {
+    display: none;
+}
+
 h3 {
     font-size: 2.5rem;
 }
@@ -70,9 +74,6 @@ span, p, ul, input, button {
     line-height: 2.5rem;
 }
 
-.updates {
-
-}
 
 label {
     margin-left: 1rem;
@@ -133,4 +134,40 @@ footer {
 
 footer a {
     color: var(--white);
+}
+
+@media screen and (max-width: 1050px) {
+    h1 + h2 {
+        display: none;
+    }
+
+    h2 + h2 {
+        display: inline;
+    }
+    
+    h2 > span {
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .two {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .two section {
+        width: 80%;
+    }
+
+    form {
+        width: 100%
+    }
+}
+
+@media screen and (max-width: 404px) {
+    input {
+        max-width: 100%;
+    }
 }
