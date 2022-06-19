@@ -94,7 +94,7 @@ module.exports = {
     inToCm
 }
 
-// ========== things to maybe add later ========
+// ========== TODO: things to maybe add later ========
 
 // get a specific design size, for any weird fabric count
 function convertSpecificSize(givenWidth, givenHeight, units, givenCount, givenOver, convertToCount) {
