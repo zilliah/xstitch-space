@@ -1,13 +1,11 @@
-const { application } = require("express");
 const express = require("express");
 const app = express();
 const PORT = 3000;
 
 
+//set up mongoDB
 
-
-
-
+//routes
 
 
 app.listen(PORT, _ => {
