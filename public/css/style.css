@@ -9,7 +9,7 @@
 }
 
 header {
-    background-image: linear-gradient(rgb(16, 197, 167, 0.8), rgb(4, 71, 80, 0.5)), url("floss-col.jpg");
+    background-image: linear-gradient(rgb(16, 197, 167, 0.8), rgb(4, 71, 80, 0.5)), url("../img/floss-col.jpg");
     background-size: cover;
     text-align: center;
     padding: 15vh 0;
