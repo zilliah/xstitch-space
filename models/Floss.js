@@ -6,7 +6,8 @@ const FlossSchema = new mongoose.Schema({
     name: String, 
     photo: String,
     hex: String, 
-    colorFamily: [{String}]
+    type: [{String}],
+    colorFamily: [{String}],
 });
 
 module.exports = mongoose.model("Floss", FlossSchema);
