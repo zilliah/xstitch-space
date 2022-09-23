@@ -4,8 +4,14 @@
   <div class="row mt-5">
       <div class="col-6">
           <div>
+              <% if (user.profilePic) {  %>
+                <img src="<%= user.profilePic %>" alt="">
+              <% } %>
               <p><strong>User Name</strong>: <%= user.userName %></p>
               <p><strong>Email</strong>: <%= user.email %></p>
+              <% if (user.bio) {  %>
+                <p><strong>Bio</strong>: <%= user.bio %></p>
+              <% } %>
               <a href="/logout" class="col-3 btn btn-primary">Logout</a>
               <a href="/user/edit-profile" class="col-3 btn btn-primary">Edit Profile</a>
 

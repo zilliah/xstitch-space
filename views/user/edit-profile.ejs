@@ -2,7 +2,11 @@
     <main class="container">
         <div class="row justify-content-center">
             <section class="col-6 mt-5">
-                <p>Add your profile information:</p>
+                <% if (user.createdProfile) { %>
+                    <p>Edit your profile information:</p>
+                <% } else { %>
+                    <p>Add your profile information:</p>
+                <% } %>
                 <% if (locals.messages.errors) { %>
                     <% messages.errors.forEach( el => { %>
                         <div class="alert alert-danger"><%= el.msg %></div>
@@ -13,7 +17,7 @@
                         <div class="alert alert-info"><%= el.msg %></div>
                     <% }) %>    
                 <% } %>
-                <form action="/edit-profile?_method=PUT" method="POST" >
+                <form action="/user/edit-profile?_method=PUT" enctype="multipart/form-data" method="POST" >
                     <div class="mb-3">
                         <label for="user-name" class="form-label">User name</label>
                         <input class="form-control" type="text" name="user-name" value="<%= user.userName %>" disabled>
@@ -28,7 +32,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="profile-pic" class="form-label">Upload a profile picture</label>
-                        <input type="file" class="form-control" name="profile-pic" id="profile-pic">
+                        <input type="file" class="form-control" name="profilePic" id="profile-pic">
                     </div>
                     
                     <!-- section for designers -->
@@ -38,7 +42,7 @@
                         <label for="designer-yes" class="form-label">Yes</label>
                         <input type="radio" class="form-check-input" id="designer-yes" name="designer" value="true">
                         <label for="designer-no" class="form-label">No</label>
-                        <input type="radio" class="form-check-input" id="designer-no" name="designer" value="false">
+                        <input type="radio" class="form-check-input" id="designer-no" name="designer" value="false" checked="true">
                       </fieldset>
                     </div>
 
@@ -80,8 +84,12 @@
 
                     </section>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <a href="/user/profile" class="btn btn-light" role="button">Skip for now</a>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <% if (user.createdProfile) { %>
+                        <a href="/user/profile" class="btn btn-light" role="button">Back</a>
+                    <% } else { %>
+                        <a href="/user/profile" class="btn btn-light" role="button">Skip for now</a>
+                    <% } %>
                   </form>
             </section>
         </div>
