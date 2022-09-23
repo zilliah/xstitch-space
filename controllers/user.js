@@ -26,13 +26,15 @@ module.exports = {
       
       //TODO desginerId needs to be done to get the ref from it
       // if (req.body.designer)
-      
-      const cloud = await cloudinary.uploader.upload(req.file.path);
+      let cloud;      
+      if (req.body.profilePic) {
+        let cloud = await (await cloudinary.uploader.upload(req.file.path)).secure_url;
+      } 
       await User.findOneAndUpdate(
         {_id: req.user.id}, 
         {
           bio: req.body.bio, 
-          profilePic: cloud.secure_url,
+          profilePic: cloud,
           createdProfile: true,
         }
       );
