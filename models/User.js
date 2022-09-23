@@ -6,7 +6,15 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, unique: true },
   password: String, 
   bio: String,
-  profilePic: String
+  profilePic: String, 
+  createdProfile: {
+    type: Boolean,
+    default: false
+  },
+  designerId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Designer", 
+  }, 
 });
 
 
