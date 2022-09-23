@@ -13,6 +13,7 @@ const DesignerSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User", 
     }, 
+    logo: String,
 });
 
-module.exports = mongoose.model("Author", DesignerSchema);
+module.exports = mongoose.model("Designer", DesignerSchema);

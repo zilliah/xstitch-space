@@ -5,9 +5,9 @@ const PatternSchema = new mongoose.Schema({
         type: String, 
         required: true,
     }, 
-    authorId: {
+    DesignerId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Author",
+        ref: "Designer",
     },
     externalPatternLink: {
         type: String,
