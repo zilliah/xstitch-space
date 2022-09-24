@@ -38,7 +38,11 @@
               <% } %>
               <a href="/logout" class="col-3 btn btn-primary">Logout</a>
               <a href="/user/edit-profile" class="col-3 btn btn-primary">Edit Profile</a>
-              <a href="/designer/edit-profile" class="col-3 btn btn-primary">Edit Designer Info</a>
+              <% if (user.designerId) {  %>
+                <a href="/designer/edit-profile" class="col-3 btn btn-primary">Edit Designer Info</a>
+              <% } else { %>
+                <a href="/designer/edit-profile" class="col-3 btn btn-primary">Create Designer Profile</a>
+              <% } %>
 
           </div>
           

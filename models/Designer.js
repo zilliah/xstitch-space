@@ -14,6 +14,10 @@ const DesignerSchema = new mongoose.Schema({
         ref: "User", 
     }, 
     logo: String,
+    sellOnsite: {
+        type: Boolean,
+        default: false,
+    }
 });
 
 module.exports = mongoose.model("Designer", DesignerSchema);

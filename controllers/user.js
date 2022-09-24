@@ -24,21 +24,29 @@ module.exports = {
   saveProfile: async (req, res) => {
     try {
 
-      const designerId = Designer.findOne({ userId: req.user._id})._id;
-      let cloud;
+      //TODO don't do this here, do it with designer profile creation
+      // const designerId = Designer.findOne({ userId: req.user._id})._id;
+
+      let cloudiD, cloudUrl;
       if (req.body.profilePic) {
-        cloud = await (await cloudinary.uploader.upload(req.file.path)).secure_url;
-      } 
+        const cloud = await cloudinary.uploader.upload(req.file.path);
+        cloudId = cloud.public_id;
+        cloudUrl = cloud.secure_url;
+      }
+
+      console.log(cloudId, cloudUrl)
+
       await User.findOneAndUpdate(
         {_id: req.user.id}, 
         {
           bio: req.body.bio, 
-          profilePic: cloud,
+          profilePic: cloudUrl,
+          cloudinaryId: cloudiD,
           createdProfile: true,
           designerId: designerId,
         }
       );
-
+      console.log("User profile updated");
       res.redirect("/user/profile");
     } catch (err) {
         console.log(err);
