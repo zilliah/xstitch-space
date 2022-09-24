@@ -5,18 +5,10 @@ const userController = require("../controllers/user");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 
-//auth
-// router.get("/login", authController.getLogin);
-// router.post("/login", authController.postLogin);
-// router.get("/logout", authController.logout);
-
-// router.get("/signup", authController.getSignup);
-// router.post("/signup", authController.postSignup);
-
-//profile
 router.get("/profile", ensureAuth, userController.getProfile);  
 
 router.get("/edit-profile", ensureAuth, userController.editProfile);
-router.put("/edit-profile", ensureAuth, upload.array("avatar", 2), userController.saveProfile);
+router.put("/edit-profile", ensureAuth, upload.single("profilePic"), userController.saveProfile);
+
 
 module.exports = router;

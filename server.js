@@ -11,6 +11,7 @@ const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 // const postRoutes = require("./routes/posts");
 const userRoutes = require("./routes/user");
+const designerRoutes = require("./routes/designer");
 const patternRoutes = require("./routes/pattern");
 const projectRoutes = require("./routes/project");
 
@@ -60,6 +61,7 @@ app.use(flash());
 app.use("/", mainRoutes);
 // app.use("/post", postRoutes);
 app.use("/user", userRoutes);
+app.use("/designer", designerRoutes);
 // app.use("/pattern", patternRoutes);
 // app.use("/project", projectRoutes);
 

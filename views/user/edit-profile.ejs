@@ -32,57 +32,9 @@
                     </div>
                     <div class="mb-3">
                         <label for="profile-pic" class="form-label">Upload a profile picture</label>
-                        <input type="file" class="form-control" name="avatar" id="profile-pic">
+                        <input type="file" class="form-control" name="profilePic" id="profile-pic">
                     </div>
                     
-                    <!-- section for designers -->
-                    <div class="mb-3">
-                      <fieldset>
-                        <legend class="col-form-label">Are you a pattern designer?</legend>
-                        <label for="designer-yes" class="form-label">Yes</label>
-                        <input type="radio" class="form-check-input" id="designer-yes" name="designer" value="true">
-                        <label for="designer-no" class="form-label">No</label>
-                        <input type="radio" class="form-check-input" id="designer-no" name="designer" value="false" checked="true">
-                      </fieldset>
-                    </div>
-
-                    <section id="designer" class="hide">
-                        <!-- TODO reword this or restyle to make it more readable -->
-                        <div class="alert alert-primary">
-                            <p>You should fill this section out even if you don't plan to sell patterns on X Stitch Space!</p>
-                            <p> Adding your designer info will give you full control of your pattern listings on the site, and will make it easier and faster to add new patterns.</p>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="des-name" class="form-label">Designer Name</label>
-                            <input type="text" class="form-control" id="des-name" name="designerName" placeholder="<%= user.userName%>">
-                        </div>
-                        <div class="mb-3">
-                            <label for="shop-link" class="form-label">Shop link</label>
-                            <input type="text" class="form-control" id="shop-link" name="site" placeholder="http://my-shop-name.com">
-                        </div>
-                        <div class="mb-3">
-                            <label for="logo" class="form-label">Upload your store logo</label>
-                            <input type="file" class="form-control" name="avatar" id="logo">
-                        </div>
-                        <div class="mb-3">
-                            <label for="des-bio" class="form-label">Designer Bio</label>
-                            <textarea name="designer-bio" id="des-bio" class="form-control" placeholder="I love to create full coverage landscape patterns."></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <fieldset>
-                              <legend class="col-form-label">Do you want to sell patterns via X Stitch Space?</legend>
-                              <label for="onsite-yes" class="form-label">Yes</label>
-                              <input type="radio" class="form-check-input" id="onsite-yes" name="onsite-sell" value="true">
-                              <label for="onsite-no" class="form-label">No</label>
-                              <input type="radio" class="form-check-input" id="onsite-no" name="onsite-sell" value="false">
-                              <label for="onsite-maybe" class="form-label">Maybe later</label>
-                              <input type="radio" class="form-check-input" id="onsite-maybe" name="onsite-sell" value="false">
-                            </fieldset>
-                          </div>
-
-
-                    </section>
 
                     <button type="submit" class="btn btn-primary">Save</button>
                     <% if (user.createdProfile) { %>
@@ -93,7 +45,6 @@
                   </form>
             </section>
         </div>
-        <script src="../js/hide.js"></script>
     </main>
 
 <%- include('../partials/footer') -%>

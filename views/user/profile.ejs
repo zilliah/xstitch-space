@@ -4,8 +4,32 @@
   <div class="row mt-5">
       <div class="col-6">
           <div>
+            <% if (user.designerId) { %>
+              <section id="designer">
+
+                <% if (designer.logo) {  %>
+                  <img class="avatar"  src="<%= designer.logo %>" alt="Designer's logo">
+                <% } %>
+                
+                <% if (designer.name) {  %>
+                <p><strong>Designer Name</strong>: <%= designer.name %></p>
+                <% } %>
+
+                <% if (designer.name) {  %>
+                <p><strong>Shop<a href="<%= designer.site %>"></a></strong> </p>
+                <% } %>
+
+                <% if (designer.bio) {  %>
+                <p><strong>Designer Bio</strong>: <%= designer.bio %></p>
+                <% } %>
+              </section>
+            <% } %>
+
+
+
+
               <% if (user.profilePic) {  %>
-                <img class="avatar"  src="<%= user.profilePic %>" alt="">
+                <img class="avatar"  src="<%= user.profilePic %>" alt="User's avatar">
               <% } %>
               <p><strong>User Name</strong>: <%= user.userName %></p>
               <p><strong>Email</strong>: <%= user.email %></p>
@@ -14,6 +38,7 @@
               <% } %>
               <a href="/logout" class="col-3 btn btn-primary">Logout</a>
               <a href="/user/edit-profile" class="col-3 btn btn-primary">Edit Profile</a>
+              <a href="/designer/edit-profile" class="col-3 btn btn-primary">Edit Designer Info</a>
 
           </div>
           
