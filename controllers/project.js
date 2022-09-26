@@ -20,14 +20,14 @@ module.exports = {
   },
   saveProject: async (req, res) => {
     try {
+      console.log(req.body);
       // Upload image to cloudinary
-      //TODO figure out how to fix this -______________-
-    //   const result = await cloudinary.uploader.upload(req.file.path);
-
-        const date = req.body.startDate || Date.now();
-        console.log(req.body)
-        console.log(req.body.patternName)
-        console.log(req.body.notes)
+      let cloudId, cloudUrl;
+      const result = await cloudinary.uploader.upload(req.file.path);
+      if (result) {
+        cloudId = result.public_id;
+        cloudUrl = result.secure_url;
+      }
 
         await Project.create({
             title: req.body.title,
@@ -35,10 +35,10 @@ module.exports = {
             patternLink: req.body.patternLink,
             // patternId: TODO once patterns exist
             stitchedBy: req.user.id,
-            startDate: date, 
+            startDate: req.body.startDate || Date.now(), 
             finishDate: req.body.finishDate,
-            // img: result.secure_url,
-            // cloudinaryId: result.public_id,
+            img: cloudUrl || "",
+            cloudinaryId: cloudId || "",
             notes: req.body.notes,
         });
 

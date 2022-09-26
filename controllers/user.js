@@ -18,23 +18,22 @@ module.exports = {
   },
   saveProfile: async (req, res) => {
     try {
-      console.log("saving stuff");
-      // console.log(req.user);
-      // console.log(req.body);
-
-      const isDesigner = req.body.designer;
+      // const isDesigner = req.body.designer;
       
       //TODO desginerId needs to be done to get the ref from it
       // if (req.body.designer)
-      let cloud;      
-      if (req.body.profilePic) {
-        let cloud = await (await cloudinary.uploader.upload(req.file.path)).secure_url;
-      } 
+      let cloudId, cloudUrl;
+      const result = await cloudinary.uploader.upload(req.file.path);
+      if (result) {
+        cloudId = result.public_id;
+        cloudUrl = result.secure_url;
+      }
       await User.findOneAndUpdate(
         {_id: req.user.id}, 
         {
           bio: req.body.bio, 
-          profilePic: cloud,
+          profilePic: cloudUrl || "",
+          cloudinaryId: cloudId || "",
           createdProfile: true,
         }
       );

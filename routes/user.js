@@ -17,6 +17,6 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 router.get("/profile", ensureAuth, userController.getProfile);  
 
 router.get("/edit-profile", ensureAuth, userController.editProfile);
-router.put("/edit-profile", ensureAuth, upload.single("profilePic"), userController.saveProfile);
+router.put("/edit-profile", ensureAuth, upload.single("file"), userController.saveProfile);
 
 module.exports = router;

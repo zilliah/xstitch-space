@@ -25,8 +25,8 @@ notes: req.body.caption, -->
                 <% } %>
                 <form action="/project/create" enctype="multipart/form-data" method="POST" >
                     <div class="mb-3">
-                        <label for="title" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="title" name="title">
+                        <label for="title" class="form-label">Title*</label>
+                        <input type="text" class="form-control" id="title" name="title" required>
                     </div>
                     <div class="mb-3">
                         <label for="pattern-name" class="form-label">Pattern Name</label>
@@ -45,8 +45,8 @@ notes: req.body.caption, -->
                         <input type="date" class="form-control" id="finish-date" name="finishDate">
                     </div>
                     <div class="mb-3">
-                        <label for="photo" class="form-label">Upload photo</label>
-                        <input type="file" class="form-control" name="projectPhoto" id="project-photo">
+                        <label for="project-photo" class="form-label">Upload photo</label>
+                        <input type="file" class="form-control" name="file" id="project-photo">
                     </div>
                     <div class="mb-3">
                         <label for="notes" class="form-label">Notes</label>
