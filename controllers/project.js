@@ -6,7 +6,7 @@ module.exports = {
   getProject: async (req, res) => {
     try {
         const project = await Project.findById(req.params.id);
-        res.render("/project/project.ejs", { project: project, user: req.user });
+        res.render("project/project.ejs", { project: project, user: req.user });
     } catch (err) {
         console.log(err);
     }
@@ -28,21 +28,28 @@ module.exports = {
         cloudUrl = result.secure_url;
       }
 
-        await Project.create({
-            title: req.body.title,
-            patternName: req.body.patternName, 
-            patternLink: req.body.patternLink,
-            // patternId: TODO once patterns exist
-            stitchedBy: req.user.id,
-            startDate: req.body.startDate || Date.now(), 
-            finishDate: req.body.finishDate,
-            img: cloudUrl || "https://res.cloudinary.com/dwpjg7oqj/image/upload/v1664223095/favicon-32x32_etl5zr.png",
-            cloudinaryId: cloudId || "",
-            notes: req.body.notes,
-        });
+      let validatedUrl;
+      if (!req.body.patternLink.match(/^https?:\/\//)) {
+        validatedUrl = "https://" + req.body.patternLink;
+      } else {
+        validatedUrl = req.body.patternLink;
+      }
 
-        console.log("Project has been added!");
-        res.redirect("/user/profile");
+      await Project.create({
+          title: req.body.title,
+          patternName: req.body.patternName, 
+          patternLink: validatedUrl,
+          // patternId: TODO once patterns exist
+          stitchedBy: req.user.id,
+          startDate: req.body.startDate || Date.now(), 
+          finishDate: req.body.finishDate,
+          img: cloudUrl || "https://res.cloudinary.com/dwpjg7oqj/image/upload/v1664223095/favicon-32x32_etl5zr.png",
+          cloudinaryId: cloudId || "",
+          notes: req.body.notes,
+      });
+
+      console.log("Project has been added!");
+      res.redirect("/user/profile");
 
     } catch (err) {
         console.log(err);
