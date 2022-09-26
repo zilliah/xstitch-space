@@ -12,6 +12,7 @@ module.exports = {
     }
   },
   createProject: async (req, res) => {
+    console.log("creating new project");
     try {
         res.render("project/create.ejs", { user: req.user });
     } catch (err) {

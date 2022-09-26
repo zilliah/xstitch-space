@@ -23,10 +23,9 @@ img.img-thumbnail {
 }
 
 .project-gallery li {
-    display: inline-block;
     text-align: center;
+    list-style-type: none;
 }
 
 h4 {
-    display: inline-block;
 }

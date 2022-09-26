@@ -16,14 +16,14 @@
     </div>
   </div>
 
-  <div class="col-3 mt-5">
+  <div class="mt-5">
     <% if (project.patternName) { %>
       <h4>Pattern name:</h4>
       <span><%= project.patternName %></span>
     <% } %>
     <% if (project.patternLink) { %>
+      <h4>Pattern Link:</h4>
       <a href="<%= project.patternLink %>">
-        <h4>Pattern Link:</h4>
         <span><%= project.patternLink %></span>
       </a>
     <% } %>
