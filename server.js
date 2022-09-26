@@ -60,8 +60,8 @@ app.use(flash());
 app.use("/", mainRoutes);
 // app.use("/post", postRoutes);
 app.use("/user", userRoutes);
+app.use("/project", projectRoutes);
 // app.use("/pattern", patternRoutes);
-// app.use("/project", projectRoutes);
 
 //Server Running
 app.listen(process.env.PORT, () => {

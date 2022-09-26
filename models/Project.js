@@ -1,14 +1,16 @@
 const mongoose = require("mongoose")
 
 const ProjectSchema = new mongoose.Schema({
-    name: {
+    title: {
         type: String,
         required: true
     },
-    pattern: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Pattern"
-    }, 
+    patternName: { type: String },
+    patternLink: { type: String },
+    // patternId: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "Pattern"
+    // }, 
     stitchedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User", 
@@ -21,11 +23,9 @@ const ProjectSchema = new mongoose.Schema({
     finishDate: {
         type: Date
     },
-    img: [{String}],
-    notes: [{
-        type: Date, 
-        type: String
-    }]
+    img: { type: String },
+    cloudinaryId: { type: String },
+    notes: { type: String },
 });
 
 module.exports = mongoose.model("Project", ProjectSchema);
