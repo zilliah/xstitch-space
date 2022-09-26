@@ -1,0 +1,54 @@
+<%- include('../partials/header') -%>
+    <main class="container">
+        <div class="row justify-content-center">
+            <section class="col-6 mt-5">
+                <h2>Create New Project</h2>
+                <% if (locals.messages.errors) { %>
+                    <% messages.errors.forEach( el => { %>
+                        <div class="alert alert-danger"><%= el.msg %></div>
+                    <% }) %>    
+                <% } %>
+                <% if (locals.messages.info) { %>
+                    <% messages.info.forEach( el => { %>
+                        <div class="alert alert-info"><%= el.msg %></div>
+                    <% }) %>    
+                <% } %>
+                <form action="/project/create" enctype="multipart/form-data" method="POST" >
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title*</label>
+                        <input type="text" class="form-control" id="title" name="title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pattern-name" class="form-label">Pattern Name</label>
+                        <input type="text" class="form-control" id="pattern-name" name="patternName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="pattern-link" class="form-label">Pattern link</label>
+                        <input type="text" class="form-control" id="pattern-link" name="patternLink" placeholder="http://etsy.com/etc">
+                    </div>
+                    <div class="mb-3">
+                        <label for="start-date" class="form-label">Start Date</label>
+                        <input type="date" class="form-control" id="start-date" name="startDate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="finish-date" class="form-label">Finish Date</label>
+                        <input type="date" class="form-control" id="finish-date" name="finishDate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="project-photo" class="form-label">Upload photo</label>
+                        <input type="file" class="form-control" name="file" id="project-photo">
+                    </div>
+                    <div class="mb-3">
+                        <label for="notes" class="form-label">Notes</label>
+                        <textarea name="notes" id="notes" class="form-control" ></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a href="/user/profile" class="btn btn-light" role="button">Cancel</a>
+                  </form>
+            </section>
+        </div>
+        <script src="../js/hide.js"></script>
+    </main>
+
+<%- include('../partials/footer') -%>

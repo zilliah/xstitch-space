@@ -38,17 +38,20 @@
               <% } %>
               <a href="/logout" class="col-3 btn btn-primary">Logout</a>
               <a href="/user/edit-profile" class="col-3 btn btn-primary">Edit Profile</a>
-              <% if (user.designerId) {  %>
-                <a href="/designer/edit-profile" class="col-3 btn btn-primary">Edit Designer Info</a>
-              <% } else { %>
-                <a href="/designer/edit-profile" class="col-3 btn btn-primary">Create Designer Profile</a>
-              <% } %>
-
+              <a href="/project/create" class="col-3 btn btn-primary">Add New Project</a>
           </div>
-          
       </div>
- 
     </div>
+    <div class="row">
+      <h2>Projects</h2>
+      <ul class="project-gallery container">
+        <% for (let proj of projects) { %>
+          <li class="col-sm"><a href="/project/<%= proj._id %>"><h3><%= proj.title %></h3><img class="img-thumbnail" src="<%= proj.img %>" alt="Project thumbnail"></a></li>
+        <% } %>
+      </ul>
+
+    </div>
+
   </div>
 </div>
 

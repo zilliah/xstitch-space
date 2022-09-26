@@ -1,15 +1,12 @@
 const cloudinary = require("../middleware/cloudinary");
 const User = require("../models/User");
-const Designer = require("../models/Designer");
+const Project = require("../models/Project")
 
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      if (req.user.designerId) {
-        const designer = Designer.findOne({ userId: req.user._id});
-        res.render("user/profile.ejs", { user: req.user, designer: designer });
-      } 
-      else res.render("user/profile.ejs", { user: req.user });
+      const projects = await Project.find({ stitchedBy: req.user.id}).sort({ startDate: "desc"}).lean();
+      res.render("user/profile.ejs", { user: req.user, projects: projects });
     } catch (err) {
       console.log(err);
     }
@@ -23,25 +20,23 @@ module.exports = {
   },
   saveProfile: async (req, res) => {
     try {
+      // const isDesigner = req.body.designer;
+      //TODO desginerId needs to be done to get the ref from it
+      // if (req.body.designer)
+      console.log(req.body)
 
-      //TODO don't do this here, do it with designer profile creation
-      // const designerId = Designer.findOne({ userId: req.user._id})._id;
-
-      let cloudiD, cloudUrl;
-      if (req.body.profilePic) {
-        const cloud = await cloudinary.uploader.upload(req.file.path);
-        cloudId = cloud.public_id;
-        cloudUrl = cloud.secure_url;
+      let cloudId, cloudUrl;
+      if (req.file) {
+        const result = await cloudinary.uploader.upload(req.file.path);
+        cloudId = result.public_id;
+        cloudUrl = result.secure_url;
       }
-
-      console.log(cloudId, cloudUrl)
-
       await User.findOneAndUpdate(
         {_id: req.user.id}, 
         {
           bio: req.body.bio, 
-          profilePic: cloudUrl,
-          cloudinaryId: cloudiD,
+          profilePic: cloudUrl || "",
+          cloudinaryId: cloudId || "",
           createdProfile: true,
           designerId: designerId,
         }
