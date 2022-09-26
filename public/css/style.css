@@ -10,3 +10,19 @@ form {
     max-width: 100px;
     max-height: 100px;
 }
+
+img.img-thumbnail {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.project-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.project-gallery li {
+    display: inline-block;
+    text-align: center;
+}

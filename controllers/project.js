@@ -20,11 +20,10 @@ module.exports = {
   },
   saveProject: async (req, res) => {
     try {
-      console.log(req.body);
       // Upload image to cloudinary
       let cloudId, cloudUrl;
-      const result = await cloudinary.uploader.upload(req.file.path);
-      if (result) {
+      if (req.file) {
+        const result = await cloudinary.uploader.upload(req.file.path);
         cloudId = result.public_id;
         cloudUrl = result.secure_url;
       }
@@ -37,7 +36,7 @@ module.exports = {
             stitchedBy: req.user.id,
             startDate: req.body.startDate || Date.now(), 
             finishDate: req.body.finishDate,
-            img: cloudUrl || "",
+            img: cloudUrl || "https://res.cloudinary.com/dwpjg7oqj/image/upload/v1664223095/favicon-32x32_etl5zr.png",
             cloudinaryId: cloudId || "",
             notes: req.body.notes,
         });
