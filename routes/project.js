@@ -7,7 +7,7 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 // router.get("/:id", ensureAuth, projectController.getProject);
 
 router.get("/create", ensureAuth, projectController.createProject);
-router.post("/create", upload.single("file"), projectController.saveProject);
+router.post("/create", ensureAuth, upload.single("file"), projectController.saveProject);
 
 //TODO add edit and delete later
 
