@@ -22,13 +22,13 @@
                 <form action="/designer/edit-profile?_method=PUT" enctype="multipart/form-data" method="POST" >
                     <!-- TODO reword this or restyle to make it more readable -->
                     <div class="alert alert-primary">
-                        <p>You should add your designer info out even if you don't plan to sell patterns on X Stitch Space.</p>
+                        <p>You should add your designer info even if you don't plan to sell patterns on X Stitch Space.</p>
                         <p> Adding your designer info will give you full control of your pattern listings on the site, and will make it easier and faster to add new patterns.</p>
                     </div>
 
                     <div class="mb-3">
-                        <label for="des-name" class="form-label">Designer Name</label>
-                        <input type="text" class="form-control" id="des-name" name="designerName" placeholder="<%= user.userName%>">
+                        <label for="des-name" class="form-label">Designer Name*</label>
+                        <input type="text" class="form-control" id="des-name" name="designerName" placeholder="<%= user.userName%>" required>
                     </div>
                     <div class="mb-3">
                         <label for="shop-link" class="form-label">Shop link</label>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="logo" class="form-label">Upload your store logo</label>
-                        <input type="file" class="form-control" name="logo" id="logo">
+                        <input type="file" class="form-control" name="file" id="logo">
                     </div>
                     <div class="mb-3">
                         <label for="des-bio" class="form-label">Designer Bio</label>
@@ -61,11 +61,7 @@
 
 
                     <button type="submit" class="btn btn-primary">Save</button>
-                    <% if (user.designerId) { %>
-                        <a href="/user/profile" class="btn btn-light" role="button">Back</a>
-                    <% } else { %>
-                        <a href="/user/profile" class="btn btn-light" role="button">Skip for now</a>
-                    <% } %>
+                    <a href="/user/profile" class="btn btn-light" role="button">Back</a>
                 </form>
             </section>
         </div>

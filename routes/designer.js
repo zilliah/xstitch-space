@@ -9,6 +9,6 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 // router.get("/profile", ensureAuth, designerController.getProfile);  
 
 router.get("/edit-profile", ensureAuth, designerController.editProfile);
-router.put("/edit-profile", ensureAuth, upload.single("logo"), designerController.saveProfile);
+router.put("/edit-profile", ensureAuth, upload.single("file"), designerController.saveProfile);
 
 module.exports = router;

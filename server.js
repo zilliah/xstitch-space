@@ -10,6 +10,7 @@ const logger = require("morgan");
 const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 const userRoutes = require("./routes/user");
+const designerRoutes = require("./routes/designer");
 const patternRoutes = require("./routes/pattern");
 const projectRoutes = require("./routes/project");
 
@@ -58,6 +59,7 @@ app.use(flash());
 //Setup Routes For Which The Server Is Listening
 app.use("/", mainRoutes);
 app.use("/user", userRoutes);
+app.use("/designer", designerRoutes);
 app.use("/project", projectRoutes);
 // app.use("/pattern", patternRoutes);
 
